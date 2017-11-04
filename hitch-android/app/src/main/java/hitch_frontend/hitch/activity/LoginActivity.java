@@ -35,12 +35,10 @@ public class LoginActivity extends Activity implements CreateAccountDialog.Creat
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-//        requestWindowFeature(Window.FEATURE_NO_TITLE);
-//        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
-//                WindowManager.LayoutParams.FLAG_FULLSCREEN);
-
         // attempt to log user in from credentials stored in SharedPreferences
-        String[] credentials = retrieveCredentials();
+        Log.d("LoginActivity", "Retrieving Credentials");
+//        String[] credentials = retrieveCredentials();
+        String[] credentials = new String[0];
         if (credentials.length == 2 && validateLogin(credentials[0], credentials[1])) {
             // user validated from saved credentials
             launchScheduler();
@@ -60,19 +58,26 @@ public class LoginActivity extends Activity implements CreateAccountDialog.Creat
     // returns empty String[] if not found
     public String[] retrieveCredentials() {
         SharedPreferences data = getSharedPreferences(PREFERENCES_FILE_KEY, Context.MODE_PRIVATE);
+
+        String user_name = data.contains(USERNAME_KEY) ? data.getString(USERNAME_KEY, "") : "";
+        String password = data.contains(PASSWORD_KEY) ? data.getString(PASSWORD_KEY, "") : "";
+
+        Log.d("LoginActivity", "Retrieving Credentials " + user_name + ", " + password);
+
         // return 2-element array of username, password if keys contained in context
-        if (data.contains(USERNAME_KEY) && data.contains(PASSWORD_KEY)) {
+        if (user_name.isEmpty() && password.isEmpty()) {
+            return new String[0];
+        } else {
             return new String[] {
                     data.getString(USERNAME_KEY, ""),
                     data.getString(PASSWORD_KEY, "")
             };
-        } else {
-            return new String[0];
         }
     }
 
     // writes username, password to SharedPreferences
     public void writeCredentials(String username, String password) {
+        Log.d("LoginActivity", "Writing Credentials " + username + ", " + password);
         SharedPreferences.Editor editor = getSharedPreferences(PREFERENCES_FILE_KEY, Context.MODE_PRIVATE).edit();
         editor.putString(USERNAME_KEY, username);
         editor.putString(PASSWORD_KEY, password);
@@ -81,13 +86,18 @@ public class LoginActivity extends Activity implements CreateAccountDialog.Creat
 
     // attempts to validate the given username and password, returns result
     public boolean validateLogin(String username, String password) {
+        Log.d("LoginActivity", "Validating Login (" + username + ", " + password + ")");
         return true;
     }
 
     // handle user pressing button to submit password
     public void onPasswordSubmitted(View view) {
+        String username = usernameEntry.getText().toString();
+        String password = passwordEntry.getText().toString();
+        Log.d("LoginActivity", "onPasswordSubmitted (" + username + ", " + password + ")");
         // try to validate user-entered name and password
-        if (validateLogin(usernameEntry.getText().toString(), passwordEntry.getText().toString())) {
+        if (validateLogin(username, password)) {
+            Log.d("LoginActivity", "Validated Login");
             // save credentials to SharedPreferences
             writeCredentials(usernameEntry.getText().toString(), passwordEntry.getText().toString());
             launchScheduler();
@@ -98,17 +108,20 @@ public class LoginActivity extends Activity implements CreateAccountDialog.Creat
 
     // handle user pressing button to launch CreateDialog
     public void onCreateDialog(View view) {
+        Log.d("LoginActivity", "onCreateDialog()");
         launchCreateDialog();
     }
 
     // launches create an account dialog
     public void launchCreateDialog() {
+        Log.d("LoginActivity", "Launching Create Dialog");
         CreateAccountDialog dialog = CreateAccountDialog.newInstance();
         dialog.show(getFragmentManager(), "Create an Account");
     }
 
     // launches scheduling activity
     public void launchScheduler() {
+        Log.d("LoginActivity", "Launching Scheduler");
         startActivity(new Intent(this, SchedulerActivity.class));
     }
 

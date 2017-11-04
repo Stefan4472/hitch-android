@@ -1,4 +1,4 @@
-package hitch_frontend.hitch;
+package hitch_frontend.hitch.activity;
 
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
@@ -10,14 +10,16 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
-public class test extends FragmentActivity implements OnMapReadyCallback {
+import hitch_frontend.hitch.R;
+
+public class MapFragment extends FragmentActivity implements OnMapReadyCallback {
 
     private GoogleMap mMap;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_test);
+        setContentView(R.layout.map_fragment);
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
