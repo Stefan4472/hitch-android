@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/create_account_dialog"
+    android:orientation="vertical"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center">
+    <!-- "Create an Account" title -->
+    <TextView
+        android:id="@+id/create_account_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/create_account"/>
+    <!-- "Enter Username" textview -->
+    <TextView
+        android:id="@+id/enter_username_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/username" />
+    <!-- username entry -->
+    <EditText
+        android:id="@+id/username_entry"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="text"/>
+    <!-- "First Name" textview -->
+    <TextView
+        android:id="@+id/firstname_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/firstname" />
+    <!-- firstname entry -->
+    <EditText
+        android:id="@+id/firstname_entry"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="text"/>
+    <!-- "Last Name" textview -->
+    <TextView
+        android:id="@+id/lastname_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/lastname" />
+    <!-- lastname entry -->
+    <EditText
+        android:id="@+id/lastname_entry"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="text"/>
+    <!-- "Enter Password" textview -->
+    <TextView
+        android:id="@+id/password_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/password" />
+    <!-- password entry -->
+    <EditText
+        android:id="@+id/password_entry"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="text"/>
+    <!-- confirm button -->
+    <Button
+        android:id="@+id/confirm_account"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/confirm"
+        android:onClick="onConfirmed"/>
+</LinearLayout>
