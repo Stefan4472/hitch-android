@@ -37,8 +37,8 @@ public class LoginActivity extends Activity implements CreateAccountDialog.Creat
 
         // attempt to log user in from credentials stored in SharedPreferences
         Log.d("LoginActivity", "Retrieving Credentials");
-//        String[] credentials = retrieveCredentials();
-        String[] credentials = new String[0];
+        String[] credentials = retrieveCredentials();
+//        String[] credentials = new String[0];
         if (credentials.length == 2 && validateLogin(credentials[0], credentials[1])) {
             // user validated from saved credentials
             launchScheduler();

@@ -10,4 +10,16 @@
     <string name="firstname">First Name</string>
     <string name="lastname">Last Name</string>
     <string name="confirm">Confirm</string>
+    <string name="find_rides">Find Rides</string>
+    <string name="pick_up">Pick Up</string>
+    <string name="drop_off">Drop Off</string>
+    <string name="withing_mils">Within {} Miles</string>
+    <string name="depart_at">Depart At</string>
+    <string name="arrive_by">Arrive By</string>
+    <string name="am">a.m.</string>
+    <string name="pm">p.m.</string>
+    <string name="within">Within</string>
+    <string name="miles_of">Miles Of</string>
+    <string name="default_precision">0.25</string>
+    <string name="update">Update</string>
 </resources>

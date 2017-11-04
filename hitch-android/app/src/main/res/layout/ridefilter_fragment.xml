@@ -1,0 +1,130 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/ride_filter_config"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+    <!-- displays "Find Rides" in the top left of the layout -->
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_margin="5dp"
+        android:text="@string/find_rides"/>
+    <!-- row of UI elements for entering precision -->
+    <LinearLayout
+        android:id="@+id/precision_row"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_below="@+id/title"
+        android:layout_toRightOf="@+id/title"
+        android:layout_toEndOf="@+id/title">
+        <!-- "Within" -->
+        <TextView
+            android:id="@+id/within_txt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/within"
+            android:layout_gravity="center_vertical"/>
+        <!-- enter pick up address -->
+        <EditText
+            android:id="@+id/precision_entry"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/default_precision"
+            android:inputType="numberDecimal"
+            android:layout_gravity="center_vertical"/>
+        <!-- "Within" -->
+        <TextView
+            android:id="@+id/miles_of_txt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/miles_of"
+            android:layout_gravity="center_vertical"/>
+    </LinearLayout>
+    <!-- row of UI elements for entering pickup -->
+    <LinearLayout
+        android:id="@+id/pickup_row"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_below="@+id/title"
+        android:layout_toRightOf="@+id/title"
+        android:layout_toEndOf="@+id/title">
+        <!-- "Pick Up" -->
+        <TextView
+            android:id="@+id/pick_up_txt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/pick_up"
+            android:layout_gravity="center_vertical"/>
+        <!-- enter pick up address -->
+        <EditText
+            android:id="@+id/pick_up_entry"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="textCapSentences"
+            android:layout_gravity="center_vertical"/>
+    </LinearLayout>
+    <!-- row of UI elements for configuring drop off -->
+    <LinearLayout
+        android:id="@+id/dropoff_row"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_below="@+id/pickup_row"
+        android:layout_alignLeft="@+id/pickup_row"
+        android:layout_alignStart="@+id/pickup_row">
+        <!-- "Drop Off" -->
+        <TextView
+            android:id="@+id/drop_off_txt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/drop_off"
+            android:layout_gravity="center_vertical"/>
+        <!-- enter drop off address -->
+        <EditText
+            android:id="@+id/drop_off_entry"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="textCapSentences"
+            android:layout_gravity="center_vertical"/>
+    </LinearLayout>
+    <!-- row of UI elements for configuring time -->
+    <LinearLayout
+        android:id="@+id/time_row"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_below="@+id/pickup_row"
+        android:layout_alignLeft="@+id/pickup_row"
+        android:layout_alignStart="@+id/pickup_row">
+        <!-- Spinner for keywords (Depart At, Arrive By) -->
+        <Spinner
+            android:id="@+id/depart_arrive_spinner"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+        <!-- button that displays first date. Clicking will pop up a DatePicker todo: custom view element?-->
+        <Button
+            android:id="@+id/choose_date_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+        <!-- Spinner for keywords (a.m., p.m.) -->
+        <Spinner
+            android:id="@+id/am_pm_spinner"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
+    <!-- button in bottom right corner that allows user to confirm any filter changes -->
+    <Button
+        android:id="@+id/update_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/time_row"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:text="@string/update"/>
+</RelativeLayout>

@@ -8,12 +8,19 @@
         android:text="Passenger Layout"
         android:textSize="40sp"/>
     <!-- Google Maps fragment -->
-    <fragment xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:map="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
+    <fragment
         android:id="@+id/map"
-        android:name="com.google.android.gms.maps.SupportMapFragment"
+        android:name="com.google.android.gms.maps.MapFragment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+    <!-- todo: viewswitcher -->
+    <!-- ride filter fragment -->
+    <!-- LogFilterFragment so user can configure how they want to filter activities -->
+    <fragment
+        android:name="hitch_frontend.hitch.activity.RideFilterFragment"
+        class="hitch_frontend.hitch.activity.RideFilterFragment"
+        android:id="@+id/ridefilter_config"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        tools:context="hitch_frontend.hitch.activity.MapFragment" />
+        android:layout_gravity="center_horizontal"/>
 </LinearLayout>

@@ -18,7 +18,8 @@ import hitch_frontend.hitch.R;
  * Main App
  */
 
-public class SchedulerActivity extends FragmentActivity implements OnMapReadyCallback {
+public class SchedulerActivity extends FragmentActivity implements OnMapReadyCallback,
+        RideFilterFragment.OnFilterUpdatedListener {
 
     // GoogleMap object
     private GoogleMap mMap;
@@ -53,5 +54,12 @@ public class SchedulerActivity extends FragmentActivity implements OnMapReadyCal
         LatLng sydney = new LatLng(-34, 151);
         mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
         mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
+    }
+
+    @Override  // called when filter is updated
+    public void onFilterUpdated(RideFilterFragment rideFilterFragment, String sourceAddress,
+                                String destAddress, float precisionMi, long time, boolean useDepart) {
+        Log.d("SchedulerActivity", "Received Filter Params " + sourceAddress + ", " + destAddress +
+            ", " + precisionMi + ", " + time + ", " + useDepart);
     }
 }
