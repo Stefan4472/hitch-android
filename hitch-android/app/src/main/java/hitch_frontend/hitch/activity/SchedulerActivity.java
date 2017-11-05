@@ -32,8 +32,7 @@ public class SchedulerActivity extends FragmentActivity implements OnMapReadyCal
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         Log.d("SchedulerActivity", "Requesting Map");
-        mapFragment.getMapAsync(this);
-
+        //mapFragment.getMapAsync(this);
     }
 
     /**

@@ -22,4 +22,9 @@
     <string name="miles_of">Miles Of</string>
     <string name="default_precision">0.25</string>
     <string name="update">Update</string>
+    <string name="from_address">From {}</string>
+    <string name="to_address">To {}</string>
+    <string name="ride_info">With {} at {}</string>
+    <string name="accept_ride">Accept Ride</string>
+    <string name="drop_off_at">And With Dropoff At</string>
 </resources>
