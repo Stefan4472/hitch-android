@@ -2,10 +2,13 @@ package hitch_frontend.hitch.activity;
 
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ViewSwitcher;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -15,8 +18,12 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
+import java.util.List;
+
 import hitch_frontend.hitch.R;
 import hitch_frontend.hitch.fragment.RideFilterFragment;
+import hitch_frontend.hitch.helper.RequestUtil;
+import hitch_frontend.hitch.helper.Ride;
 
 /**
  * Main App
@@ -27,6 +34,9 @@ public class SchedulerActivity extends FragmentActivity implements OnMapReadyCal
 
     private MapView mapView;
     private GoogleMap googleMap;
+    private RecyclerView availableRides;
+    private LinearLayoutManager displayManager;
+    private ViewSwitcher viewSwitcher;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -37,8 +47,24 @@ public class SchedulerActivity extends FragmentActivity implements OnMapReadyCal
         mapView.onCreate(savedInstanceState);
         mapView.onResume();
         mapView.getMapAsync(this);
+
+        viewSwitcher = (ViewSwitcher) findViewById(R.id.viewswitcher);
+
+        availableRides = (RecyclerView) findViewById(R.id.ride_display);
+        displayManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
+        availableRides.setLayoutManager(displayManager);
     }
 
+    @Override  // called when filter is updated
+    public void onFilterUpdated(RideFilterFragment rideFilterFragment, String sourceAddress,
+                                String destAddress, float precisionMi) {
+        Log.d("SchedulerActivity", "Received Filter Params " + sourceAddress + ", " + destAddress +
+                ", " + precisionMi);
+        List<Ride> filtered_rides = RequestUtil.queryRides(sourceAddress, destAddress, precisionMi);
+        // switch to showing the rides
+        viewSwitcher.showNext();
+        
+    }
     /**
      * Manipulates the map once available.
      * This callback is triggered when the map is ready to be used.
@@ -57,13 +83,5 @@ public class SchedulerActivity extends FragmentActivity implements OnMapReadyCal
 //        LatLng sydney = new LatLng(-34, 151);
 //        mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
 //        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
-    }
-
-    @Override  // called when filter is updated
-    public void onFilterUpdated(RideFilterFragment rideFilterFragment, String sourceAddress,
-                                String destAddress, float precisionMi) {
-        Log.d("SchedulerActivity", "Received Filter Params " + sourceAddress + ", " + destAddress +
-            ", " + precisionMi);
-
     }
 }

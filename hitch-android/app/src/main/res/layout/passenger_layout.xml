@@ -12,14 +12,21 @@
         android:id="@+id/map"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
-    <!-- todo: viewswitcher -->
-    <!-- ride filter fragment -->
-    <!-- LogFilterFragment so user can configure how they want to filter activities -->
-    <fragment
-        android:name="hitch_frontend.hitch.fragment.RideFilterFragment"
-        class="hitch_frontend.hitch.fragment.RideFilterFragment"
-        android:id="@+id/ridefilter_config"
+    <ViewSwitcher
+        android:id="@+id/viewswitcher"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"/>
+        android:layout_height="wrap_content">
+        <!-- RideFilter Fragment, for user to create the query -->
+        <fragment
+            android:id="@+id/ridefilter_config"
+            android:name="hitch_frontend.hitch.fragment.RideFilterFragment"
+            class="hitch_frontend.hitch.fragment.RideFilterFragment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"/>
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/ride_display"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+    </ViewSwitcher>
 </LinearLayout>

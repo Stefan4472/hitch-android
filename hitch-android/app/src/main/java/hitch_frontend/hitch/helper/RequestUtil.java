@@ -15,8 +15,7 @@ public class RequestUtil {
     }
 
     // returns list of Rides that match given query
-    public static List<Ride> queryRides(String source, String dest, float precision, long time,
-                                        boolean use_depart) {
+    public static List<Ride> queryRides(String source, String dest, float precision) {
         return new ArrayList<>();
     }
 
