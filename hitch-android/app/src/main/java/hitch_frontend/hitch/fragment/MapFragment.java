@@ -1,4 +1,4 @@
-package hitch_frontend.hitch.activity;
+package hitch_frontend.hitch.fragment;
 
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;

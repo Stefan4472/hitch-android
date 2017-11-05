@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import hitch_frontend.hitch.R;
+import hitch_frontend.hitch.fragment.CreateAccountDialog;
 
 /**
  * Handles user log-in. User credentials would be stored in PREFERENCES_FILE_KEY once user has

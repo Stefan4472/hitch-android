@@ -1,8 +1,7 @@
-package hitch_frontend.hitch.activity;
+package hitch_frontend.hitch.view;
 
 
 import android.content.Context;
-import android.graphics.Color;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,6 +12,7 @@ import android.widget.TextView;
 import java.util.List;
 
 import hitch_frontend.hitch.R;
+import hitch_frontend.hitch.helper.RideInfo;
 
 /**
  * Adapter to visually display a list of RideInfo objects in a RecyclerView. Communicates via the

@@ -77,37 +77,12 @@
             android:inputType="textCapSentences"
             android:layout_gravity="center_vertical"/>
     </LinearLayout>
-    <!-- row of UI elements for configuring time -->
-    <LinearLayout
-        android:id="@+id/time_row"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_below="@+id/dest_row"
-        android:layout_alignLeft="@+id/source_row"
-        android:layout_alignStart="@+id/source_row">
-        <!-- Spinner for keywords (Depart At, Arrive By) -->
-        <Spinner
-            android:id="@+id/depart_arrive_spinner"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
-        <!-- button that displays first date. Clicking will pop up a DatePicker todo: custom view element?-->
-        <Button
-            android:id="@+id/choose_date_1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
-        <!-- Spinner for keywords (a.m., p.m.) -->
-        <Spinner
-            android:id="@+id/am_pm_spinner"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
-    </LinearLayout>
     <!-- button in bottom right corner that allows user to confirm any filter changes -->
     <Button
         android:id="@+id/update_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/time_row"
+        android:layout_below="@+id/dest_row"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
         android:text="@string/update"/>

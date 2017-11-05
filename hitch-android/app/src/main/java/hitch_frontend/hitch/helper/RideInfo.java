@@ -1,4 +1,4 @@
-package hitch_frontend.hitch.activity;
+package hitch_frontend.hitch.helper;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
