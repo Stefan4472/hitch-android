@@ -13,7 +13,7 @@
         android:layout_alignParentTop="true"
         android:layout_margin="5dp"
         android:text="@string/find_rides"
-        android:textSize="30sp"/>
+        android:textSize="25sp"/>
     <!-- row of UI elements for entering precision and start address -->
     <LinearLayout
         android:id="@+id/source_row"
@@ -21,15 +21,16 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:layout_below="@+id/title"
-        android:layout_toRightOf="@+id/title"
-        android:layout_toEndOf="@+id/title">
+        android:layout_margin="5dp"
+        android:layout_alignLeft="@+id/title">
         <!-- "Within" -->
         <TextView
             android:id="@+id/within_txt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/within"
-            android:layout_gravity="center_vertical"/>
+            android:layout_gravity="center_vertical"
+            android:textSize="15sp"/>
         <!-- enter precision -->
         <EditText
             android:id="@+id/precision_entry"
@@ -44,13 +45,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/miles_of"
-            android:layout_gravity="center_vertical"/>
+            android:layout_gravity="center_vertical"
+            android:textSize="15sp"/>
         <!-- enter pick up address -->
-        <EditText
+        <AutoCompleteTextView
             android:id="@+id/pick_up_entry"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:inputType="textCapSentences"
+            android:inputType="text"
             android:layout_gravity="center_vertical"/>
     </LinearLayout>
     <!-- row of UI elements for configuring drop off -->
@@ -60,8 +62,8 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:layout_below="@+id/source_row"
-        android:layout_alignLeft="@+id/source_row"
-        android:layout_alignStart="@+id/source_row">
+        android:layout_margin="5dp"
+        android:layout_alignLeft="@+id/title">
         <!-- "Drop Off" -->
         <TextView
             android:id="@+id/drop_off_txt"
@@ -70,11 +72,11 @@
             android:text="@string/drop_off_at"
             android:layout_gravity="center_vertical"/>
         <!-- enter drop off address -->
-        <EditText
+        <AutoCompleteTextView
             android:id="@+id/drop_off_entry"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:inputType="textCapSentences"
+            android:inputType="text"
             android:layout_gravity="center_vertical"/>
     </LinearLayout>
     <!-- button in bottom right corner that allows user to confirm any filter changes -->

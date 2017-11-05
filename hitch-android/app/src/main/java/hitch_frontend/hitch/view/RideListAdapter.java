@@ -12,7 +12,7 @@ import android.widget.TextView;
 import java.util.List;
 
 import hitch_frontend.hitch.R;
-import hitch_frontend.hitch.helper.RideInfo;
+import hitch_frontend.hitch.helper.Ride;
 
 /**
  * Adapter to visually display a list of RideInfo objects in a RecyclerView. Communicates via the
@@ -22,23 +22,23 @@ import hitch_frontend.hitch.helper.RideInfo;
  * the onDeleteLogEntry callback. The actual delete action must also be handled by an outside class.
  */
 
-public class RideInfoAdapter extends RecyclerView.Adapter<RideInfoAdapter.RideInfoViewHolder> {
+public class RideListAdapter extends RecyclerView.Adapter<RideListAdapter.RideInfoViewHolder> {
 
     // list of RideInfo objects to be displayed in the RecyclerView
-    private List<RideInfo> displayedRides;
+    private List<Ride> displayedRides;
     // used to inflate views for LogEntries
     private LayoutInflater inflater;
-    private RideInfoListener mListener;
+    private RideListAdapterListener mListener;
 
     // callback interface. Each callback passes the index of the selected LogEntry in the Adapter's
     // internal list, as well as the actual LogEntry instance.
-    public interface RideInfoListener {
+    public interface RideListAdapterListener {
         // fired when user chooses a ride, returns index+RideInfo object
-        void onChooseRide(int index, RideInfo chosen);
+        void onChooseRide(int index, Ride chosen);
     }
 
     // todo: could this be dangerous? make copy of logs?
-    public RideInfoAdapter(Context context, List<RideInfo> ridesToDisplay, RideInfoListener listener) {
+    public RideListAdapter(Context context, List<Ride> ridesToDisplay, RideListAdapterListener listener) {
         inflater = LayoutInflater.from(context);
         this.displayedRides = ridesToDisplay;
         mListener = listener;
@@ -52,7 +52,7 @@ public class RideInfoAdapter extends RecyclerView.Adapter<RideInfoAdapter.RideIn
 
     @Override // binds the data from the RideInfo at given position to the holder that contains the view itself
     public void onBindViewHolder(final RideInfoViewHolder holder, final int position) {
-        RideInfo bound_entry = displayedRides.get(position);
+        Ride bound_entry = displayedRides.get(position);
         holder.sourceInfoText.setText("From " + bound_entry.getSourceAddress());
         holder.destInfoText.setText("To " + bound_entry.getDestAddress());
         holder.otherInfoText.setText("With " + bound_entry.getDriverName() + " at " + bound_entry.getFormattedDepartTime());
@@ -69,7 +69,7 @@ public class RideInfoAdapter extends RecyclerView.Adapter<RideInfoAdapter.RideIn
         return displayedRides.size();
     }
 
-    public RideInfo get(int index) {
+    public Ride get(int index) {
         return displayedRides.get(index);
     }
 
